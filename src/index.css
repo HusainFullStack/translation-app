@@ -72,4 +72,8 @@ button:focus-visible {
 iframe#\:2\.container { 
   display:none;
 }
+
+div#goog-gt-tt {
+    display: none !important;
+}
     
