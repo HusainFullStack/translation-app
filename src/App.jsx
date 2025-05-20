@@ -1,27 +1,30 @@
 import { useEffect } from "react";
 
 function App() {
-  useEffect(() => {
-    if (!window.googleTranslateElementInit) {
-      window.googleTranslateElementInit = () => {
-        new window.google.translate.TranslateElement(
-          {
-            pageLanguage: "en",
-            layout:
-              window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-            includedLanguages: "ar,en",
-          },
-          "google_translate_element"
-        );
-      };
+useEffect(() => {
+  // Set cookie to translate from English to Arabic
+  document.cookie = "googtrans=/en/ar;path=/;domain=" + window.location.hostname;
 
-      const script = document.createElement("script");
-      script.src =
-        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
+  if (!window.googleTranslateElementInit) {
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+          includedLanguages: "ar,en",
+        },
+        "google_translate_element"
+      );
+    };
+
+    const script = document.createElement("script");
+    script.src =
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    document.body.appendChild(script);
+  }
+}, []);
+
 
   return (
     <div
