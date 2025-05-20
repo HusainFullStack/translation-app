@@ -9,7 +9,7 @@ function App() {
             pageLanguage: "en",
             layout:
               window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-            includedLanguages: "en,ar",
+            includedLanguages: "ar,en",
           },
           "google_translate_element"
         );
